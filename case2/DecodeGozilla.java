@@ -20,7 +20,7 @@ public class DecodeGozilla {
         byte[] dst = new byte[4 * ((src.length + 2) / 3)];
         int linemax = -1;
         boolean doPadding = true;
-        char[] base64 = ShortNode.toBase64;
+        char[] base64 = DecodeGozilla.toBase64;
         int sp = off;
         int slen = (end - off) / 3 * 3;
         int sl = off + slen;
@@ -94,7 +94,7 @@ public class DecodeGozilla {
             Arrays.fill(base64, -1);
 
             int dp;
-            for(dp = 0; dp < ShortNode.toBase64.length; base64[ShortNode.toBase64[dp]] = dp++) {
+            for(dp = 0; dp < DecodeGozilla.toBase64.length; base64[DecodeGozilla.toBase64[dp]] = dp++) {
             }
 
             base64[61] = -2;
@@ -156,7 +156,7 @@ public class DecodeGozilla {
 
         try {
             String decodedURL = URLDecoder.decode(req, StandardCharsets.UTF_8.toString());
-            byte[] decodeByte = ShortNode.x(ShortNode.base64Decode(decodedURL), false);
+            byte[] decodeByte = DecodeGozilla.x(DecodeGozilla.base64Decode(decodedURL), false);
 
             // 创建文件输出流
             try (FileOutputStream fos = new FileOutputStream(filename)) {
@@ -175,7 +175,7 @@ public class DecodeGozilla {
     public static void d_rep(String encodedURL){
         //encodedURL = "onS9v8+cuZdJYM6pZEZtUQ==";
         try {
-            byte[] decodeByte = ShortNode.x(ShortNode.base64Decode(encodedURL), false);
+            byte[] decodeByte = DecodeGozilla.x(DecodeGozilla.base64Decode(encodedURL), false);
             System.out.println("result: " + base64Encode(decodeByte));
 
         } catch (Exception e) {
